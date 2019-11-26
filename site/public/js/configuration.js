@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     $("input,textarea,select").on("change", function() {
         var elem = this;
         let formData = new FormData();
@@ -46,7 +45,7 @@ $(document).ready(function() {
             }
         });
     });
-
+  
     function updateForumMessage() {
         $("#forum-enabled-message").toggle();
         $("#forum-category-warning").toggle();
