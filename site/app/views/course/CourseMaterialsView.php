@@ -16,7 +16,7 @@ class CourseMaterialsView extends AbstractView {
      * @return string
      */
     public function listCourseMaterials($user_group) {
-        $this->core->getOutput()->addInternalCss(FileUtils::joinPaths('fileinput.css'));
+        $this->core->getOutput()->addInternalCss(FileUtils::joinPaths('fileinput.min.css'));
         $this->core->getOutput()->addVendorJs(FileUtils::joinPaths('flatpickr', 'flatpickr.min.js'));
         $this->core->getOutput()->addVendorCss(FileUtils::joinPaths('flatpickr', 'flatpickr.min.css'));
         $this->core->getOutput()->addVendorJs(FileUtils::joinPaths('flatpickr', 'plugins', 'shortcutButtons', 'shortcut-buttons-flatpickr.min.js'));
@@ -128,7 +128,7 @@ class CourseMaterialsView extends AbstractView {
         $expected_path = FileUtils::joinPaths($this->core->getConfig()->getCoursePath(), "uploads", "course_materials");
         $path_length = strlen($expected_path)+1;
         $course_materials_array = FileUtils::getAllFilesTrimSearchPath($expected_path, $path_length);
-        $this->core->getOutput()->addInternalJs("drag-and-drop.js");
+        $this->core->getOutput()->addInternalJs("drag-and-drop.min.js");
         //Sort the files/folders in alphabetical order
         usort($course_materials_array, 'strnatcasecmp');
 

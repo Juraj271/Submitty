@@ -1,0 +1,27 @@
+{
+  "name": "scss",
+  "version": "1.0.0",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "latest",
+    "cssnano": "latest",
+    "grunt": "latest",
+    "grunt-contrib-uglify": "^4.0.1",
+    "grunt-contrib-watch": "latest",
+    "grunt-postcss": "latest",
+    "grunt-sass": "latest",
+    "node-sass": "latest",
+    "uglifyjs-webpack-plugin": "^2.2.0"
+  },
+  "description": "",
+  "dependencies": {
+    "grunt-contrib-cssmin": "^3.0.0",
+    "grunt-contrib-uglify-es": "^3.3.0",
+    "uglify-es": "^3.3.9"
+  }
+}

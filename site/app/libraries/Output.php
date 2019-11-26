@@ -145,9 +145,9 @@ HTML;
 
         $this->addVendorJs(FileUtils::joinPaths('jquery', 'jquery.min.js'));
         $this->addVendorJs(FileUtils::joinPaths('jquery-ui', 'jquery-ui.min.js'));
-        $this->addInternalJs('diff-viewer.js');
-        $this->addInternalJs('server.js');
-        $this->addInternalJs('menu.js');
+        $this->addInternalJs('diff-viewer.min.js');
+        $this->addInternalJs('server.min.js');
+        $this->addInternalJs('menu.min.js');
     }
 
     /**

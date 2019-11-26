@@ -7,7 +7,7 @@ use app\models\User;
 class NotificationView extends AbstractView {
     public function showNotifications($current_course, $show_all, $notifications, $notification_saves) {
         $this->core->getOutput()->addBreadcrumb("Notifications");
-        $this->core->getOutput()->addInternalCss('notifications.css');
+        $this->core->getOutput()->addInternalCss('notifications.min.css');
         $this->core->getOutput()->renderTwigOutput("Notifications.twig", [
             'course' => $current_course,
             'show_all' => $show_all,
@@ -21,7 +21,7 @@ class NotificationView extends AbstractView {
 
     public function showNotificationSettings($notification_saves) {
         $this->core->getOutput()->addBreadcrumb("Notifications", $this->core->buildCourseUrl(['notifications']));
-        $this->core->getOutput()->addInternalCss('notifications.css');
+        $this->core->getOutput()->addInternalCss('notifications.min.css');
         $this->core->getOutput()->addBreadcrumb("Notification Settings");
         $this->core->getOutput()->renderTwigOutput("NotificationSettings.twig", [
             'notification_saves' => $notification_saves,

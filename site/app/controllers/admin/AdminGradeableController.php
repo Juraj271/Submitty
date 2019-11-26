@@ -70,7 +70,7 @@ class AdminGradeableController extends AbstractController {
         );
         $this->core->getOutput()->addVendorCss(FileUtils::joinPaths('flatpickr', 'flatpickr.min.css'));
         $this->core->getOutput()->addVendorCss(FileUtils::joinPaths('flatpickr', 'plugins', 'shortcutButtons', 'themes', 'light.min.css'));
-        $this->core->getOutput()->addInternalCss('admin-gradeable.css');
+        $this->core->getOutput()->addInternalCss('admin-gradeable.min.css');
         $this->core->getOutput()->renderTwigOutput('admin/admin_gradeable/AdminGradeableBase.twig', [
             'submit_url' => $submit_url,
             'gradeable' => $gradeable,
@@ -193,17 +193,17 @@ class AdminGradeableController extends AbstractController {
 
         if ($gradeable->getType() === GradeableType::ELECTRONIC_FILE) {
             $this->core->getOutput()->addVendorJs(FileUtils::joinPaths('twigjs', 'twig.min.js'));
-            $this->core->getOutput()->addInternalJs('ta-grading-rubric-conflict.js');
-            $this->core->getOutput()->addInternalJs('ta-grading-rubric.js');
-            $this->core->getOutput()->addInternalJs('gradeable.js');
-            $this->core->getOutput()->addInternalCss('ta-grading.css');
+            $this->core->getOutput()->addInternalJs('ta-grading-rubric-conflict.min.js');
+            $this->core->getOutput()->addInternalJs('ta-grading-rubric.min.js');
+            $this->core->getOutput()->addInternalJs('gradeable.min.js');
+            $this->core->getOutput()->addInternalCss('ta-grading.min.css');
         }
         $this->core->getOutput()->addVendorJs(FileUtils::joinPaths('flatpickr', 'flatpickr.min.js'));
         $this->core->getOutput()->addVendorCss(FileUtils::joinPaths('flatpickr', 'flatpickr.min.css'));
         $this->core->getOutput()->addVendorJs(FileUtils::joinPaths('flatpickr', 'plugins', 'shortcutButtons', 'shortcut-buttons-flatpickr.min.js'));
         $this->core->getOutput()->addVendorCss(FileUtils::joinPaths('flatpickr', 'plugins', 'shortcutButtons', 'themes', 'light.min.css'));
-        $this->core->getOutput()->addInternalJs('admin-gradeable-updates.js');
-        $this->core->getOutput()->addInternalCss('admin-gradeable.css');
+        $this->core->getOutput()->addInternalJs('admin-gradeable-updates.min.js');
+        $this->core->getOutput()->addInternalCss('admin-gradeable.min.css');
         $this->core->getOutput()->renderTwigOutput('admin/admin_gradeable/AdminGradeableBase.twig', [
             'gradeable' => $gradeable,
             'action' => 'edit',

@@ -197,7 +197,7 @@ class ElectronicGraderView extends AbstractView {
             }
         }
         $details_url = $this->core->buildCourseUrl(['gradeable', $gradeable->getId(), 'grading', 'details']);
-        $this->core->getOutput()->addInternalCss('admin-gradeable.css');
+        $this->core->getOutput()->addInternalCss('admin-gradeable.min.css');
         return $this->core->getOutput()->renderTwigTemplate("grading/electronic/Status.twig", [
             "gradeable_id" => $gradeable->getId(),
             "gradeable_title" => $gradeable->getTitle(),
@@ -241,7 +241,9 @@ class ElectronicGraderView extends AbstractView {
             "bulk_stats_url" => $this->core->buildCourseUrl(['gradeable', $gradeable->getId(), 'bulk_stats']),
             "details_url" => $details_url,
             "details_view_all_url" => $details_url . '?' . http_build_query(['view' => 'all']),
-            "grade_url" => $this->core->buildCourseUrl(['gradeable', $gradeable->getId(), 'grading', 'grade'])
+            "grade_url" => $this->core->buildCourseUrl(['gradeable', $gradeable->getId(), 'grading', 'grade']),
+            "regrade_allowed" => $this->core->getConfig()->isRegradeEnabled(),
+            "grade_inquiry_per_component_allowed" => $gradeable->isGradeInquiryPerComponentAllowed(),
         ]);
     }
 
@@ -978,11 +980,11 @@ HTML;
         $has_overridden_grades = $graded_gradeable->hasOverriddenGrades();
 
         $this->core->getOutput()->addVendorJs(FileUtils::joinPaths('twigjs', 'twig.min.js'));
-        $this->core->getOutput()->addInternalJs('ta-grading-keymap.js');
-        $this->core->getOutput()->addInternalJs('ta-grading.js');
-        $this->core->getOutput()->addInternalJs('ta-grading-rubric-conflict.js');
-        $this->core->getOutput()->addInternalJs('ta-grading-rubric.js');
-        $this->core->getOutput()->addInternalJs('gradeable.js');
+        $this->core->getOutput()->addInternalJs('ta-grading-keymap.min.js');
+        $this->core->getOutput()->addInternalJs('ta-grading.min.js');
+        $this->core->getOutput()->addInternalJs('ta-grading-rubric-conflict.min.js');
+        $this->core->getOutput()->addInternalJs('ta-grading-rubric.min.js');
+        $this->core->getOutput()->addInternalJs('gradeable.min.js');
         $return .= $this->core->getOutput()->renderTwigTemplate("grading/electronic/RubricPanel.twig", [
             "gradeable_id" => $gradeable->getId(),
             "is_ta_grading" => $gradeable->isTaGrading(),

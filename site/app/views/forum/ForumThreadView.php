@@ -129,13 +129,13 @@ class ForumThreadView extends AbstractView {
             //Body Style is necessary to make sure that the forum is still readable...
             $this->core->getOutput()->addVendorCss('codemirror/codemirror.css');
             $this->core->getOutput()->addVendorCss('codemirror/theme/eclipse.css');
-            $this->core->getOutput()->addInternalCss('forum.css');
+            $this->core->getOutput()->addInternalCss('forum.min.css');
             $this->core->getOutput()->addVendorJs('codemirror/codemirror.js');
             $this->core->getOutput()->addVendorJs('codemirror/mode/clike/clike.js');
             $this->core->getOutput()->addVendorJs('codemirror/mode/python/python.js');
             $this->core->getOutput()->addVendorJs('codemirror/mode/shell/shell.js');
-            $this->core->getOutput()->addInternalJs('drag-and-drop.js');
-            $this->core->getOutput()->addInternalJs('forum.js');
+            $this->core->getOutput()->addInternalJs('drag-and-drop.min.js');
+            $this->core->getOutput()->addInternalJs('forum.min.js');
             $this->core->getOutput()->addVendorJs('jquery.are-you-sure/jquery.are-you-sure.js');
             $this->core->getOutput()->addVendorJs('bootstrap/js/bootstrap.bundle.min.js');
         }
@@ -344,6 +344,8 @@ class ForumThreadView extends AbstractView {
                 "display_thread_count" => empty($displayThreadContent) ? 0 : count($displayThreadContent["thread_content"]),
                 "currentThread" => $currentThread,
                 "currentCourse" => $currentCourse,
+                "accessGrading" => $this->core->getUser()->accessGrading(),
+                "manage_categories_url" => $this->core->buildCourseUrl(['forum', 'categories']),
                 "generate_post_content" => $generatePostContent,
                 "thread_resolve_state" => $thread_resolve_state,
                 "display_option" => $display_option,
@@ -488,8 +490,8 @@ class ForumThreadView extends AbstractView {
             $this->core->getOutput()->addVendorJs(FileUtils::joinPaths('flatpickr', 'flatpickr.min.js'));
             $this->core->getOutput()->addVendorJs(FileUtils::joinPaths('flatpickr', 'plugins', 'shortcutButtons', 'shortcut-buttons-flatpickr.min.js'));
             $this->core->getOutput()->addVendorCss(FileUtils::joinPaths('flatpickr', 'plugins', 'shortcutButtons', 'themes', 'light.min.css'));
-            $this->core->getOutput()->addInternalJs('forum.js');
-            $this->core->getOutput()->addInternalCss('forum.css');
+            $this->core->getOutput()->addInternalJs('forum.min.js');
+            $this->core->getOutput()->addInternalCss('forum.min.css');
             $current_thread_first_post = $this->core->getQueries()->getFirstPostForThread($currentThread);
             $current_thread_date = $current_thread_first_post["timestamp"];
             $merge_thread_list = $this->core->getQueries()->getThreadsBefore($current_thread_date, 1);
@@ -959,25 +961,21 @@ class ForumThreadView extends AbstractView {
         $this->core->getOutput()->addBreadcrumb("Discussion Forum", $this->core->buildCourseUrl(['forum']));
         $this->core->getOutput()->addBreadcrumb("Create Thread", $this->core->buildCourseUrl(['forum', 'threads', 'new']));
 
-        $this->core->getOutput()->addInternalJs('drag-and-drop.js');
+        $this->core->getOutput()->addInternalJs('drag-and-drop.min.min.js');
         $this->core->getOutput()->addVendorJs('flatpickr/flatpickr.js');
         $this->core->getOutput()->addVendorJs(FileUtils::joinPaths('flatpickr', 'plugins', 'shortcutButtons', 'shortcut-buttons-flatpickr.min.js'));
         $this->core->getOutput()->addVendorJs('jquery.are-you-sure/jquery.are-you-sure.js');
         $this->core->getOutput()->addVendorCss('flatpickr/flatpickr.min.css');
         $this->core->getOutput()->addVendorCss(FileUtils::joinPaths('flatpickr', 'plugins', 'shortcutButtons', 'themes', 'light.min.css'));
 
-        $this->core->getOutput()->addInternalJs('forum.js');
-        $this->core->getOutput()->addInternalCss('forum.css');
+        $this->core->getOutput()->addInternalJs('forum.min.js');
+        $this->core->getOutput()->addInternalCss('forum.min.css');
 
         $categories = "";
 
         $category_colors;
 
         $categories = $this->core->getQueries()->getCategories();
-
-        $dummy_category = array('color' => '#000000', 'category_desc' => 'dummy', 'category_id' => "dummy");
-        array_unshift($categories, $dummy_category);
-
 
         $buttons = array(
             array(
@@ -1019,8 +1017,8 @@ class ForumThreadView extends AbstractView {
         $this->core->getOutput()->addBreadcrumb("Discussion Forum", $this->core->buildCourseUrl(['forum']));
         $this->core->getOutput()->addBreadcrumb("Manage Categories", $this->core->buildCourseUrl(['forum', 'categories']));
 
-        $this->core->getOutput()->addInternalJs('drag-and-drop.js');
-        $this->core->getOutput()->addInternalJs('forum.js');
+        $this->core->getOutput()->addInternalJs('drag-and-drop.min.js');
+        $this->core->getOutput()->addInternalJs('forum.min.js');
         $this->core->getOutput()->addVendorJs('flatpickr/flatpickr.js');
         $this->core->getOutput()->addVendorJs('jquery.are-you-sure/jquery.are-you-sure.js');
 
@@ -1031,9 +1029,6 @@ class ForumThreadView extends AbstractView {
 
         if($this->core->getUser()->accessGrading()){
             $categories = $this->core->getQueries()->getCategories();
-
-            $dummy_category = array('color' => '#000000', 'category_desc' => 'dummy', 'category_id' => "dummy");
-            array_unshift($categories, $dummy_category);
         }
 
         $buttons = array(
@@ -1081,8 +1076,8 @@ class ForumThreadView extends AbstractView {
         $this->core->getOutput()->addBreadcrumb("Discussion Forum", $this->core->buildCourseUrl(['forum']));
         $this->core->getOutput()->addBreadcrumb("Statistics", $this->core->buildCourseUrl(['forum', 'stats']));
 
-        $this->core->getOutput()->addInternalJs('forum.js');
-        $this->core->getOutput()->addInternalCss('forum.css');
+        $this->core->getOutput()->addInternalJs('forum.min.js');
+        $this->core->getOutput()->addInternalCss('forum.min.css');
 
         $buttons = array(
             array(

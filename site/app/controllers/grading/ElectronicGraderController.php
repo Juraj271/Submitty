@@ -1023,11 +1023,11 @@ class ElectronicGraderController extends AbstractController {
         );
         Logger::logTAGrading($logger_params);
 
-        $this->core->getOutput()->addInternalCss('ta-grading.css');
-        $this->core->getOutput()->addInternalCss('forum.css');
-        $this->core->getOutput()->addInternalJs('forum.js');
-        $this->core->getOutput()->addInternalCss('grade-inquiry.css');
-        $this->core->getOutput()->addInternalJs('grade-inquiry.js');
+        $this->core->getOutput()->addInternalCss('ta-grading.min.css');
+        $this->core->getOutput()->addInternalCss('forum.min.css');
+        $this->core->getOutput()->addInternalJs('forum.min.js');
+        $this->core->getOutput()->addInternalCss('grade-inquiry.min.css');
+        $this->core->getOutput()->addInternalJs('grade-inquiry.min.js');
         $show_hidden = $this->core->getAccess()->canI("autograding.show_hidden_cases", ["gradeable" => $gradeable]);
         $this->core->getOutput()->renderOutput(array('grading', 'ElectronicGrader'), 'hwGradingPage', $gradeable, $graded_gradeable, $display_version, $progress, $show_hidden, $can_inquiry, $can_verify, $show_verify_all, $show_silent_edit, $late_status, $sort, $direction, $who_id);
         $this->core->getOutput()->renderOutput(array('grading', 'ElectronicGrader'), 'popupStudents');

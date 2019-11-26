@@ -525,8 +525,8 @@ class ReportController extends AbstractController {
         }
         else{
 
-            $this->core->getOutput()->addInternalJs('rainbow-customization.js');
-            $this->core->getOutput()->addInternalCss('rainbow-customization.css');
+            $this->core->getOutput()->addInternalJs('rainbow-customization.min.js');
+            $this->core->getOutput()->addInternalCss('rainbow-customization.min.css');
 
             $this->core->getOutput()->addBreadcrumb('Rainbow Grades Customization');
 
@@ -615,4 +615,3 @@ class ReportController extends AbstractController {
         }
     }
 }
-

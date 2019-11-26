@@ -30,7 +30,7 @@ class HomeworkView extends AbstractView {
     public function showGradeable(Gradeable $gradeable, $graded_gradeable, int $display_version, bool $can_inquiry, bool $show_hidden_testcases = false ) {
         $return = '';
 
-        $this->core->getOutput()->addInternalJs('drag-and-drop.js');
+        $this->core->getOutput()->addInternalJs('drag-and-drop.min.js');
 
         // The number of days late this gradeable would be if submitted now (including exceptions)
         $late_days_use = 0;
@@ -354,12 +354,12 @@ class HomeworkView extends AbstractView {
         $testcase_messages = $version_instance !== null ? $version_instance->getTestcaseMessages() : array();
 
         // Import custom stylesheet to style notebook items
-        $this->core->getOutput()->addInternalCss('gradeable-notebook.css');
+        $this->core->getOutput()->addInternalCss('gradeable-notebook.min.css');
 
         // Import custom js for notebook items
-        $this->core->getOutput()->addInternalJs('gradeable-notebook.js');
+        $this->core->getOutput()->addInternalJs('gradeable-notebook.min.js');
 
-        $this->core->getOutput()->addInternalCss('submitbox.css');
+        $this->core->getOutput()->addInternalCss('submitbox.min.css');
         $this->core->getOutput()->addVendorCss(FileUtils::joinPaths('codemirror', 'codemirror.css'));
         $this->core->getOutput()->addVendorCss(FileUtils::joinPaths('codemirror', 'theme', 'eclipse.css'));
         $this->core->getOutput()->addVendorCss(FileUtils::joinPaths('codemirror', 'theme', 'monokai.css'));
@@ -687,7 +687,7 @@ class HomeworkView extends AbstractView {
             "csrf_token" => $this->core->getCsrfToken()
         ]);
 
-        $this->core->getOutput()->addInternalJs('confetti.js');
+        $this->core->getOutput()->addInternalJs('confetti.min.js');
         return $this->core->getOutput()->renderTwigTemplate('submission/homework/CurrentVersionBox.twig', $param);
     }
 

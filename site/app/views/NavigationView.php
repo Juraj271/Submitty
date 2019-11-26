@@ -191,7 +191,7 @@ class NavigationView extends AbstractView {
             $render_sections[] = $render_section;
         }
 
-        $this->core->getOutput()->addInternalCss("navigation.css");
+        $this->core->getOutput()->addInternalCss("navigation.min.css");
 
         return $this->core->getOutput()->renderTwigTemplate("Navigation.twig", [
             "course_name" => $this->core->getConfig()->getCourseName(),

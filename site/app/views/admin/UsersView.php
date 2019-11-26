@@ -16,11 +16,11 @@ class UsersView extends AbstractView {
      */
     public function listStudents($sorted_students, $reg_sections, $rot_sections, $download_info, $use_database=false) {
         $this->core->getOutput()->addBreadcrumb('Manage Students');
-        $this->core->getOutput()->addInternalCss('directory.css');
-        $this->core->getOutput()->addInternalCss('userform.css');
-        $this->core->getOutput()->addInternalCss('table.css');
-        $this->core->getOutput()->addInternalJs('userform.js');
-        $this->core->getOutput()->addInternalJs('directory.js');
+        $this->core->getOutput()->addInternalCss('directory.min.css');
+        $this->core->getOutput()->addInternalCss('userform.min.css');
+        $this->core->getOutput()->addInternalCss('table.min.css');
+        $this->core->getOutput()->addInternalJs('userform.min.js');
+        $this->core->getOutput()->addInternalJs('directory.min.js');
 
         return $this->core->getOutput()->renderTwigTemplate("admin/users/StudentList.twig", [
             "sections" => $sorted_students,
@@ -44,11 +44,11 @@ class UsersView extends AbstractView {
      */
     public function listGraders($graders_sorted, $reg_sections, $rot_sections, $download_info, $use_database=false) {
         $this->core->getOutput()->addBreadcrumb('Manage Graders');
-        $this->core->getOutput()->addInternalCss('directory.css');
-        $this->core->getOutput()->addInternalCss('table.css');
-        $this->core->getOutput()->addInternalCss('userform.css');
-        $this->core->getOutput()->addInternalJs('userform.js');
-        $this->core->getOutput()->addInternalJs('directory.js');
+        $this->core->getOutput()->addInternalCss('directory.min.css');
+        $this->core->getOutput()->addInternalCss('table.min.css');
+        $this->core->getOutput()->addInternalCss('userform.min.css');
+        $this->core->getOutput()->addInternalJs('userform.min.js');
+        $this->core->getOutput()->addInternalJs('directory.min.js');
 
         return $this->core->getOutput()->renderTwigTemplate("admin/users/GraderList.twig", [
             "graders" => $graders_sorted,
@@ -107,7 +107,7 @@ class UsersView extends AbstractView {
             }
         }
 
-        $this->core->getOutput()->addInternalCss('rotatingsectionsform.css');
+        $this->core->getOutput()->addInternalCss('rotatingsectionsform.min.css');
 
         return $this->core->getOutput()->renderTwigTemplate("admin/users/RotatingSectionsForm.twig", [
             "students" => $students,

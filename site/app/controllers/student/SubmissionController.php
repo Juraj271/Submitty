@@ -123,10 +123,10 @@ class SubmissionController extends AbstractController {
                 }
 
                 // If we get here, then we can safely construct the old model w/o checks
-                $this->core->getOutput()->addInternalCss('forum.css');
-                $this->core->getOutput()->addInternalJs('forum.js');
-                $this->core->getOutput()->addInternalCss('grade-inquiry.css');
-                $this->core->getOutput()->addInternalJs('grade-inquiry.js');
+                $this->core->getOutput()->addInternalCss('forum.min.css');
+                $this->core->getOutput()->addInternalJs('forum.min.js');
+                $this->core->getOutput()->addInternalCss('grade-inquiry.min.css');
+                $this->core->getOutput()->addInternalJs('grade-inquiry.min.js');
                 $this->core->getOutput()->renderOutput(array('submission', 'Homework'),
                                                        'showGradeable', $gradeable, $graded_gradeable, $version, $can_inquiry ?? false, $show_hidden);
             }
